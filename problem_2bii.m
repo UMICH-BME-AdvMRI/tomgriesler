@@ -32,12 +32,13 @@ for deph=[2*pi 4*pi 8*pi 16*pi]
             M_TE(:, jj) = zrot(beta(jj)) * (A_TE * M(:, jj) + B_TE/N_iso);
         end
         M_TE_summed = sum(M_TE, 2);
-        signal(ii) = (M_TE_summed(1) + M_TE_summed(2)) * exp(-1j * phase);
+        signal(ii) = (M_TE_summed(1) + 1j*M_TE_summed(2)) * exp(-1j * phase);
     
         % update magnetization
         for jj=1:N_iso
             M(:, jj) = zrot(beta(jj)) * (A_TR * M(:, jj) + B_TR/N_iso);
         end
+        
         phase = mod(phase + phase_inc, 2*pi);
     end
     
