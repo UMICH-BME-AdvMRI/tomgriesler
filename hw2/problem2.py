@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 #%%
-from tools import sesignal
+from tools import sesignal, fsesignal
 
 #%%
 brain_maps = h5py.File('brain_maps.mat')
@@ -24,7 +24,21 @@ def create_se_image(t1map, t2map, m0map, te, tr):
                 continue
             result[ii, jj] = m0map[ii, jj] * sesignal(t1map[ii, jj], t2map[ii, jj], te, tr)
 
-    return np.abs(result)
+    return result
+
+
+def create_fse_images(t1map, t2map, m0map, esp, tr, etl):
+    
+    result = np.zeros((np.shape(t2map) + (etl,)))
+
+    for ii in range(np.shape(t1map)[0]):
+        for jj in range(np.shape(t1map)[1]):
+            if t1map[ii, jj] == 0 or t2map[ii, jj] == 0:
+                continue
+            result[ii, jj] = m0map[ii, jj] * fsesignal(t1map[ii, jj], t2map[ii, jj], esp, tr, etl)
+
+    return result
+
 
 #%%
 def plot_image(result, title, compare, comparetitle):
@@ -48,19 +62,19 @@ def plot_image(result, title, compare, comparetitle):
 #%% PD weighted
 te = 15
 tr = 4000
-result = create_se_image(t1map, t2map, m0map, te, tr)
+result = np.abs(create_se_image(t1map, t2map, m0map, te, tr))
 plot_image(result, f'PD weighted\nTE={te}ms, TR={tr}ms', m0map, 'Proton Density')
 
 #%% T1 weighted
 te = 15
 tr = 500
-result = create_se_image(t1map, t2map, m0map, te, tr)
+result = np.abs(create_se_image(t1map, t2map, m0map, te, tr))
 plot_image(result, f'T1 weighted\nTE={te}ms, TR={tr}ms', t1map, 'T1')
 
 #%%
 te = 100
 tr = 6000
-result = create_se_image(t1map, t2map, m0map, te, tr)
+result = np.abs(create_se_image(t1map, t2map, m0map, te, tr))
 plot_image(result, f'T2 weighted\nTE={te}ms, TR={tr}ms', t2map, 'T2')
 
 #%%
