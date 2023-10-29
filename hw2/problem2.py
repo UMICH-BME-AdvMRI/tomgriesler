@@ -64,7 +64,40 @@ result = create_se_image(t1map, t2map, m0map, te, tr)
 plot_image(result, f'T2 weighted\nTE={te}ms, TR={tr}ms', t2map, 'T2')
 
 #%%
-images = {teff: {'image': create_se_image(t1map, t2map, m0map, teff, 3000)} for teff in np.arange(5, 165, 5)}
+esp = 5
+
+data_fse = {}
+for te_eff in np.arange(esp, esp*(128+1), esp):
+
+    image = create_se_image(t1map, t2map, m0map, te_eff, 3000)
+    ft = np.fft.fftshift(np.fft.fft2(data_fse[te_eff]['image']))
+
+    data_fse[te_eff] = {'image': image, 'ft': ft}
+
+
 # %%
-for key in images.keys():
-    images.
+final_kspace = np.zeros((256, 256), dtype=complex)
+
+etl = 32
+TE_eff = 120
+
+ii = int((etl/2 - TE_eff/esp)%etl)
+
+# for count in range(etl):
+
+#     ft = data_fse[esp*count]
+    
+#     final_kspace[ii*256/etl:(ii+1)*256/etl] = ft[ii*256/etl:(ii+1)*256/etl]
+
+#     ii = (ii+1) % 32
+
+
+for count in range(etl):
+
+    ft = data_fse[esp+esp*((ii+count)%etl)]['ft']
+
+    final_kspace[int(count*256/etl):int((count+1)*256/etl)] = ft[int(count*256/etl):int((count+1)*256/etl)]
+
+# %%
+plt.imshow(np.abs(np.fft.ifft2(final_kspace)), cmap='gray')
+# %%
