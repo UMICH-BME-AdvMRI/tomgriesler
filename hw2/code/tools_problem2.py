@@ -84,3 +84,29 @@ def fsesignal(T1, T2, ESP, TR, ETL):
         Msig[k] = M[0] + 1j * M[1]
 
     return Msig
+
+
+def create_se_image(t1map, t2map, m0map, te, tr):
+
+    result = np.zeros_like(t1map, dtype=complex)
+
+    for ii in range(np.shape(t1map)[0]):
+        for jj in range(np.shape(t1map)[1]):
+            if t1map[ii, jj] == 0 or t2map[ii, jj] == 0:
+                continue
+            result[ii, jj] = m0map[ii, jj] * sesignal(t1map[ii, jj], t2map[ii, jj], te, tr)
+
+    return result
+
+
+def create_fse_images(t1map, t2map, m0map, esp, tr, etl):
+    
+    result = np.zeros((np.shape(t2map) + (etl,)), dtype=complex)
+
+    for ii in range(np.shape(t1map)[0]):
+        for jj in range(np.shape(t1map)[1]):
+            if t1map[ii, jj] == 0 or t2map[ii, jj] == 0:
+                continue
+            result[ii, jj] = m0map[ii, jj] * fsesignal(t1map[ii, jj], t2map[ii, jj], esp, tr, etl)
+
+    return result
