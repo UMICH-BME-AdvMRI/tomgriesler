@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 #%%
-from tools import sesignal
+from tools import sesignal, fsesignal
 
 #%%
 brain_maps = h5py.File('brain_maps.mat')
@@ -24,7 +24,21 @@ def create_se_image(t1map, t2map, m0map, te, tr):
                 continue
             result[ii, jj] = m0map[ii, jj] * sesignal(t1map[ii, jj], t2map[ii, jj], te, tr)
 
-    return np.abs(result)
+    return result
+
+
+def create_fse_images(t1map, t2map, m0map, esp, tr, etl):
+    
+    result = np.zeros((np.shape(t2map) + (etl,)), dtype=complex)
+
+    for ii in range(np.shape(t1map)[0]):
+        for jj in range(np.shape(t1map)[1]):
+            if t1map[ii, jj] == 0 or t2map[ii, jj] == 0:
+                continue
+            result[ii, jj] = m0map[ii, jj] * fsesignal(t1map[ii, jj], t2map[ii, jj], esp, tr, etl)
+
+    return result
+
 
 #%%
 def plot_image(result, title, compare, comparetitle):
@@ -45,59 +59,54 @@ def plot_image(result, title, compare, comparetitle):
     plt.tight_layout()
     plt.show()
 
-#%% PD weighted
+#%% PD weighted SE
 te = 15
 tr = 4000
-result = create_se_image(t1map, t2map, m0map, te, tr)
+result = np.abs(create_se_image(t1map, t2map, m0map, te, tr))
 plot_image(result, f'PD weighted\nTE={te}ms, TR={tr}ms', m0map, 'Proton Density')
 
-#%% T1 weighted
+#%% T1 weighted SE
 te = 15
 tr = 500
-result = create_se_image(t1map, t2map, m0map, te, tr)
+result = np.abs(create_se_image(t1map, t2map, m0map, te, tr))
 plot_image(result, f'T1 weighted\nTE={te}ms, TR={tr}ms', t1map, 'T1')
 
-#%%
+#%% T2 weighted SE
 te = 100
 tr = 6000
-result = create_se_image(t1map, t2map, m0map, te, tr)
+result = np.abs(create_se_image(t1map, t2map, m0map, te, tr))
 plot_image(result, f'T2 weighted\nTE={te}ms, TR={tr}ms', t2map, 'T2')
 
-#%%
+#%% FSE
+tr = 3000
 esp = 5
+etl = 128
+te_eff = 80
 
-data_fse = {}
-for te_eff in np.arange(esp, esp*(128+1), esp):
-
-    image = create_se_image(t1map, t2map, m0map, te_eff, 3000)
-    ft = np.fft.fftshift(np.fft.fft2(data_fse[te_eff]['image']))
-
-    data_fse[te_eff] = {'image': image, 'ft': ft}
-
+result = create_fse_images(t1map, t2map, m0map, esp, tr, etl)
 
 # %%
-final_kspace = np.zeros((256, 256), dtype=complex)
+fts = np.zeros_like(result, dtype=complex)
 
-etl = 32
-TE_eff = 120
-
-ii = int((etl/2 - TE_eff/esp)%etl)
-
-# for count in range(etl):
-
-#     ft = data_fse[esp*count]
-    
-#     final_kspace[ii*256/etl:(ii+1)*256/etl] = ft[ii*256/etl:(ii+1)*256/etl]
-
-#     ii = (ii+1) % 32
-
-
-for count in range(etl):
-
-    ft = data_fse[esp+esp*((ii+count)%etl)]['ft']
-
-    final_kspace[int(count*256/etl):int((count+1)*256/etl)] = ft[int(count*256/etl):int((count+1)*256/etl)]
+for ii in range(etl):
+    fts[..., ii] = np.fft.fftshift(np.fft.fft2(result[..., ii]))
 
 # %%
-plt.imshow(np.abs(np.fft.ifft2(final_kspace)), cmap='gray')
+final_kpace = np.zeros_like(t1map, dtype=complex)
+
+index = int((etl/2-te_eff/esp)%etl)
+
+for ii in range(etl):
+
+    print(index)
+
+    k1 = int(index*256/etl)
+    k2 = int((index+1)*256/etl)
+
+    final_kpace[k1:k2] = fts[k1:k2, :, ii]
+
+    index = int((index+1)%etl)
+
+
+plt.imshow(np.abs(np.fft.ifft2(final_kpace)))
 # %%

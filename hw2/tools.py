@@ -78,9 +78,9 @@ def fsesignal(T1, T2, ESP, TR, ETL):
 
     M = np.linalg.inv(np.eye(3) - A) @ B 
 
-    Msig = []
+    Msig = np.zeros(ETL, dtype=complex)
     for k in range(ETL):
         M = Aesp2 @ R180 @ Aesp2 @ M + Besp2 + Aesp2 @ R180 @ Besp2
-        Msig.append(M[0] + 1j * M[1])
+        Msig[k] = M[0] + 1j * M[1]
 
     return Msig
