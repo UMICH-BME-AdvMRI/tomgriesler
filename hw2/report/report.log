@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2023.9.18)  29 OCT 2023 10:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2023.9.18)  29 OCT 2023 12:51
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -182,14 +182,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
 \l__kernel_color_stack_int=\count193
 \l__pdf_internal_box=\box45
-) (./report.aux
-
-LaTeX Warning: Label `' multiply defined.
-
-
-LaTeX Warning: Label `' multiply defined.
-
-)
+) (./report.aux)
 \openout1 = `report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
@@ -289,61 +282,117 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 18.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 18.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 24.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 24.
-<figures/1_a_i.png, id=8, 409.7709pt x 328.8285pt>
+
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 30.
+
+<figures/1_a_i.png, id=5, 409.7709pt x 328.8285pt>
 File: figures/1_a_i.png Graphic file (type png)
 <use figures/1_a_i.png>
 Package pdftex.def Info: figures/1_a_i.png  used on input line 32.
-(pdftex.def)             Requested size: 250.24199pt x 200.81088pt.
-<figures/1_a_ii.png, id=10, 409.7709pt x 328.8285pt>
+(pdftex.def)             Requested size: 350.33727pt x 281.14627pt.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 33.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 33.
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 39.
+
+<figures/1_a_ii.png, id=8, 409.7709pt x 328.8285pt>
 File: figures/1_a_ii.png Graphic file (type png)
 <use figures/1_a_ii.png>
 Package pdftex.def Info: figures/1_a_ii.png  used on input line 41.
-(pdftex.def)             Requested size: 250.24199pt x 200.81088pt.
+(pdftex.def)             Requested size: 350.33727pt x 281.14627pt.
 
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 48.
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<figures/1_a_iii.png, id=11, 409.7709pt x 328.8285pt>
+<figures/1_a_iii.png, id=10, 409.7709pt x 328.8285pt>
 File: figures/1_a_iii.png Graphic file (type png)
 <use figures/1_a_iii.png>
 Package pdftex.def Info: figures/1_a_iii.png  used on input line 50.
-(pdftex.def)             Requested size: 250.24199pt x 200.81088pt.
+(pdftex.def)             Requested size: 350.33727pt x 281.14627pt.
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 59.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 59.
+<figures/1_b.png, id=12, 409.7709pt x 316.5426pt>
+File: figures/1_b.png Graphic file (type png)
+<use figures/1_b.png>
+Package pdftex.def Info: figures/1_b.png  used on input line 61.
+(pdftex.def)             Requested size: 350.33727pt x 270.6419pt.
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 78.
+
+<figures/2_a_t1.png, id=16, 454.5783pt x 289.8027pt>
+File: figures/2_a_t1.png Graphic file (type png)
+<use figures/2_a_t1.png>
+Package pdftex.def Info: figures/2_a_t1.png  used on input line 80.
+(pdftex.def)             Requested size: 400.38872pt x 255.26152pt.
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 85.
+
+<figures/2_a_t2.png, id=17, 454.5783pt x 289.8027pt>
+File: figures/2_a_t2.png Graphic file (type png)
+<use figures/2_a_t2.png>
+Package pdftex.def Info: figures/2_a_t2.png  used on input line 87.
+(pdftex.def)             Requested size: 400.38872pt x 255.26152pt.
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 92.
+
+<figures/2_a_pd.png, id=18, 455.301pt x 290.5254pt>
+File: figures/2_a_pd.png Graphic file (type png)
+<use figures/2_a_pd.png>
+Package pdftex.def Info: figures/2_a_pd.png  used on input line 94.
+(pdftex.def)             Requested size: 400.38872pt x 255.49467pt.
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 104.
+
+<figures/2_b_ii_kspace.png, id=21, 401.8212pt x 316.5426pt>
+File: figures/2_b_ii_kspace.png Graphic file (type png)
+<use figures/2_b_ii_kspace.png>
+Package pdftex.def Info: figures/2_b_ii_kspace.png  used on input line 106.
+(pdftex.def)             Requested size: 400.38872pt x 315.41641pt.
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 111.
+
+<figures/2_b_ii_image.png, id=22, 281.1303pt x 281.1303pt>
+File: figures/2_b_ii_image.png Graphic file (type png)
+<use figures/2_b_ii_image.png>
+Package pdftex.def Info: figures/2_b_ii_image.png  used on input line 113.
+(pdftex.def)             Requested size: 350.33727pt x 350.33958pt.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 126.
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./figures/1_a_i.png>] [2 <./figures/1_a_ii.png> <./figures/1_a_iii.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 59.
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2 <./figures/1_a_i.png> <./figures/1_a_ii.png>] [3 <./figures/1_a_iii.png> <./figures/1_b.png>] [4 <./figures/2_a_t1.png> <./figures/2_a_t2.png>] [5 <./figures/2_a_pd.png> <./figures/2_b_ii_kspace.png>] [6 <./figures/2_b_ii_image.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 126.
  (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 59.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 59.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 126.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 126.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 7FA738EEA007D9FCA7C3906378F86E37;67.
-
-
-LaTeX Warning: There were multiply-defined labels.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 59.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 126.
  ) 
 Here is how much of TeX's memory you used:
- 6815 strings out of 483183
- 108314 string characters out of 5966292
- 366702 words of memory out of 5000000
- 21731 multiletter control sequences out of 15000+600000
+ 6868 strings out of 483183
+ 109324 string characters out of 5966292
+ 371362 words of memory out of 5000000
+ 21767 multiletter control sequences out of 15000+600000
  536621 words of font info for 38 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 48i,6n,46p,385b,423s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/tomgr/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on report.pdf (2 pages, 202127 bytes).
+ 48i,6n,46p,564b,472s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </home/tomgr/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>
+Output written on report.pdf (6 pages, 662724 bytes).
 PDF statistics:
- 71 PDF objects out of 1000 (max. 8388607)
- 51 compressed objects within 1 object stream
- 7 named destinations out of 1000 (max. 500000)
- 24 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 108 PDF objects out of 1000 (max. 8388607)
+ 73 compressed objects within 1 object stream
+ 18 named destinations out of 1000 (max. 500000)
+ 46 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -58,27 +58,27 @@ def se_signal(t1: float, t2: float, m0: float, te: float, tr: float):
     return omega[0, 0]
 
 
-
-def fse_signal(alpha: float, t1: float, t2: float, tr: float, n_echoes: int):
+def fse_signal(alpha: float, t1: float, t2: float, esp: float, n_echoes: int):
 
     omega = np.vstack((0, 0, 1))
 
-    # precompute some matrices to save computation time
     signal = np.empty(n_echoes, dtype=complex)
-    r_tr2 = r(t1, t2, tr/2)
-    b_tr2 = b(t1, tr/2)
+
+    # precompute some matrices to save computation time
+    r_esp2 = r(t1, t2, esp/2)
+    b_esp2 = b(t1, esp/2)
     q_alpha = q(np.deg2rad(alpha))
 
     # 90° excitation and relaxation
-    omega = r_tr2 @ q(np.deg2rad(90), 0) @ omega + b_tr2
+    omega = r_esp2 @ q(np.deg2rad(90), 0) @ omega + b_esp2
 
     # second excitation and relaxation
-    omega = r_tr2 @ epg_grad(q(np.deg2rad(alpha/2+90)) @ epg_grad(omega)) + b_tr2
+    omega = r_esp2 @ epg_grad(q(np.deg2rad(alpha/2+90)) @ epg_grad(omega)) + b_esp2
     signal[0] = omega[0, 0]
 
     # all other excitations
     for i in range(1, n_echoes):
-        omega = r_tr2 @ epg_grad(q_alpha @ r_tr2 @ epg_grad(omega)) + b_tr2
+        omega = r_esp2 @ epg_grad(q_alpha @ r_esp2 @ epg_grad(omega)) + b_esp2
         signal[i] = omega[0, 0]
 
     return signal
