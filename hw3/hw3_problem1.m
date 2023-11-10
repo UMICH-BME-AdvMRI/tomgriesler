@@ -158,7 +158,7 @@ yticks([])
 colormap('gray')
 
 %% Iterative POCS
-N = 5;
+N = 10;
 
 magnitude_temp = abs(image_partialFourier);
 phase_temp = angle(image_phaseEstimate);
@@ -177,7 +177,7 @@ for ii=1:N
 end
 
 figure
-tiledlayout(2, 3, 'TileSpacing', 'tight', 'Padding', 'tight')
+tiledlayout(2, 3, 'TileSpacing','tight', 'Padding','tight')
 
 nexttile
 imagesc(abs(image_fullySampled), [0 7e-3])
@@ -185,27 +185,8 @@ axis equal
 axis tight
 xticks([])
 yticks([])
-
-nexttile
-imagesc(abs(image_partialFourier), [0 7e-3])
-axis equal
-axis tight
-xticks([])
-yticks([])
-
-nexttile
-imagesc(10*abs(image_fullySampled-image_partialFourier), [0 7e-3])
-axis equal
-axis tight
-xticks([])
-yticks([])
-
-nexttile
-imagesc(abs(image_fullySampled), [0 7e-3])
-axis equal
-axis tight
-xticks([])
-yticks([])
+title('Fully sampled')
+ylabel('Magnitude', 'FontWeight','bold')
 
 nexttile
 imagesc(abs(image_temp), [0 7e-3])
@@ -213,6 +194,7 @@ axis equal
 axis tight
 xticks([])
 yticks([])
+title('POCS (N=10)')
 
 nexttile
 imagesc(10*abs(image_fullySampled-image_temp), [0 7e-3])
@@ -220,4 +202,29 @@ axis equal
 axis tight
 xticks([])
 yticks([])
+title('Difference x10')
 
+nexttile
+imagesc(mod(angle(image_fullySampled), pi))
+axis equal
+axis tight
+xticks([])
+yticks([])
+ylabel('Phase', 'FontWeight','bold')
+
+nexttile
+imagesc(mod(angle(image_temp), pi))
+axis equal
+axis tight
+xticks([])
+yticks([])
+
+nexttile
+imagesc(mod(angle(image_fullySampled-image_temp), pi))
+axis equal
+axis tight
+xticks([])
+yticks([])
+title('Difference')
+
+colormap("gray")
