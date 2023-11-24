@@ -3,16 +3,17 @@ load('Data_Assignment3_Problem2.mat')
 
 %%
 image_combined = zeros(200);
+coilsum = zeros(200);
 
 for ii=1:8
     image_temp = ifftshift(ifft2(kspaceData(:, :, ii)));
-    % image_combined = image_combined + conj(coilmaps(:, :, ii)) .* image_temp;
-    image_combined = image_combined + image_temp;
+    image_combined = image_combined + conj(coilmaps(:, :, ii)) .* image_temp;
+    coilsum = coilsum + conj(coilmaps(:, :, ii)) .* coilmaps(:, :, ii);
 end
 
 figure
 % imagesc(abs(sqrt(image_combined)))
-imagesc(abs(image_combined))
+imagesc(abs(sqrt(image_combined) / ))
 axis equal
 axis tight
 xticks([])
@@ -33,7 +34,7 @@ image_combined_undersampled = zeros(200);
 
 for ii=1:size(8)
     image_temp = ifftshift(ifft2(kspace_undersampled(:, :, ii)));
-    image_combined_undersampled = image_combined_undersampled + image_temp;
+    image_combined_undersampled = image_combined_undersampled + image_temp; % ./ coilmaps(:, :, ii);
 end
 
 figure

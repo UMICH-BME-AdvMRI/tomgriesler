@@ -108,7 +108,7 @@ axis equal
 axis tight
 xticks([])
 yticks([])
-title('w/o hanning filter')
+title('')
 
 filter = hanning(size(kspace_phaseEstimate, 1)) * hanning(size(kspace_phaseEstimate, 2))';
 kspace_phaseEstimate = filter .* kspace_phaseEstimate;
@@ -119,7 +119,6 @@ axis equal
 axis tight
 xticks([])
 yticks([])
-title('w/ hanning filter')
 
 image_phaseEstimate = ifftshift(ifft2(kspace_phaseEstimate));
 
@@ -133,7 +132,7 @@ axis equal
 axis tight
 xticks([])
 yticks([])
-title('Magnitude')
+title('Phase')
 ylabel('Partial Fourier', 'FontWeight','bold')
 
 nexttile
@@ -142,7 +141,7 @@ axis equal
 axis tight
 xticks([])
 yticks([])
-title('Phase')
+title('Magnitude')
 
 nexttile
 imagesc(abs(image_phaseEstimate))
@@ -215,7 +214,6 @@ axis tight
 xticks([])
 yticks([])
 ylabel('Phase', 'FontWeight','bold')
-title('Fully sampled')
 
 nexttile
 imagesc(mod(angle(image_temp), pi))
@@ -223,7 +221,6 @@ axis equal
 axis tight
 xticks([])
 yticks([])
-title('POCS (N=10)')
 
 nexttile
 imagesc(mod(angle(image_fullySampled-image_temp), pi))
